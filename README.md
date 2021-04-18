@@ -1,2 +1,2 @@
 # FrontendAPI
-Frontend for 304cem module using ReactJS
+Frontend for 6003cem module using ReactJS
