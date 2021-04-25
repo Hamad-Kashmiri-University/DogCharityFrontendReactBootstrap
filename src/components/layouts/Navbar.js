@@ -1,10 +1,10 @@
 import React from 'react';
-import logo from '../images/logo.png';
-import home from '../images/homeIcon.png';
-import shelter from '../images/shelterIcon.png';
-import about from '../images/aboutIcon.png';
-import login from '../images/login.png';
-import register from '../images/register.png';
+import logo from '../../images/logo.png';
+import home from '../../images/homeIcon.png';
+import shelter from '../../images/shelterIcon.png';
+import about from '../../images/aboutIcon.png';
+import login from '../../images/login.png';
+import register from '../../images/register.png';
 
 export default function Navbar() {
   return (
