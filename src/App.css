@@ -1,0 +1,26 @@
+:root {
+  --mainBlack: #101820FF;
+  --mainOrange: #F2AA4CFF;
+  --mainLightGrey: rgba(172,172,172);
+  --mainGrey: rgba(109,109,109);
+}
+
+ .footer-main {
+    background: var(--mainBlack);
+    padding-top: 1rem;
+    color: var(--mainLightGrey);
+    padding-left: 10rem; 
+    
+    }
+
+.footer-end {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.footer-primary {
+  bottom: 0;
+  margin-bottom: -100px;
+  position:absolute;
+  width: 100%;
+}
