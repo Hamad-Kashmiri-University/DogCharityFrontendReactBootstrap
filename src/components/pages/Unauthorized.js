@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class Unauthorized extends Component {
   render() {
     return (
-      <div> Unauthorized </div?
+      <div> Unauthorized </div>
     )
   }
 }

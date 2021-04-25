@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class DogDetails extends Component {
   render() {
     return (
-      <div> DogDetails </div?
+      <div> DogDetails </div>
     )
   }
 }
