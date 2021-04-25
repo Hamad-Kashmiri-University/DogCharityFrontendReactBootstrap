@@ -32,7 +32,7 @@ class App extends Component {
           <Route path="/register" component={Register}/>
           <Route path="/login" component={Login}/>
           <Route path="/dogdetails" component={DogDetails}/>
-          <Route path="/not-found" component={NotFound}/>
+          <Route component={NotFound}/>
           <Route path="/not-authorized" component={Unauthorized}/>
           <Route path="/Profile" component={Profile}/>
         </Switch>
