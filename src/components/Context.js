@@ -5,7 +5,6 @@ const DataContext = React.createContext();
 //consumer consumes and uses that data
 
 class DataProvider extends Component {
-  
   state = {
     dogs: dogData,
     shelters: shelterData,
@@ -14,10 +13,11 @@ class DataProvider extends Component {
   
   render() {
     return (
-      <DataContext.Provider value={
+      <DataContext.Provider value={{
       dogs: this.state.dogs,
       shelters: this.state.dogs,
-      favourites: this.state.favourites}>
+      favourites: this.state.favourites
+      }}>
       { this.props.children }
       </DataContext.Provider>
     )
