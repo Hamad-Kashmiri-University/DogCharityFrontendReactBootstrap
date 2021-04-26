@@ -11,6 +11,20 @@ class DataProvider extends Component {
     favouriteData: favouriteData
   }
   
+//   getDogData = id => {
+//     const item = this.state.dogData(item => item.id ===id);
+//     return item;
+//   }.
+  
+//   dogDataHandler = id => {
+//     const item = this.getDogData(id);
+//     this.setState(() => {
+//       return {
+//         dogData: item;
+//       }
+//     })
+//   };
+  
   render() {
     return (
       <DataContext.Provider value={{
