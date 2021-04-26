@@ -25,6 +25,10 @@ export default function Navbar() {
                 <a href="/" className="nav-item nav-link">About&nbsp;<img src={about} height="15"/></a>
             </div>
             <div className="navbar-nav ml-auto">
+              <input className="form-control mr-sm-2" style = {{display:'inline-block'}} type="search" placeholder="Search" aria-label="Search"/>
+                <button className="btn" style = {{ background:'#F2AA4CFF', color: '#fff', marginRight: '200px'}} type="submit">Search</button>
+            </div>
+            <div className="navbar-nav ml-auto">
                 <a href="/register" className="nav-item nav-link">Register&nbsp;<img src={register} height="15"/></a>
                 <a href="/login" className="nav-item nav-link">Login&nbsp;<img src={login} height="14"/></a>
             </div>

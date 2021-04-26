@@ -9,18 +9,15 @@
     background: var(--mainBlack);
     padding-top: 1rem;
     color: var(--mainLightGrey);
-    padding-left: 10rem; 
-    
     }
 
 .footer-end {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .footer-primary {
   bottom: 0;
-  margin-bottom: -100px;
-  position:fixed;
   width: 100%;
+  position: fixed;
 }

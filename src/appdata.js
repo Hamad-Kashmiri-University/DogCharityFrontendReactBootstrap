@@ -16,7 +16,7 @@ export const dogData = [{
   breed: "Pitbull",
   Traits: ["Loveable", "Fast"],
   descripton: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates qui voluptate odio quod doloremque unde reprehenderit velit quaerat. Deserunt voluptatem natus suscipit aliquid, eligendi sequi dicta porro? Laudantium, libero est",
-  imageURL: "https://cdn.pixabay.com/photo/2016/02/19/15/46/labrador-retriever-1210559__340.jpg",
+  imageURL: "http://cdn.akc.org/content/article-body-image/samoyed_puppy_dog_pictures.jpg",
   age: 6,
   date: "date",
   shelterID: 2
