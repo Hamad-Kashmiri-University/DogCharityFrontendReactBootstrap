@@ -5,6 +5,8 @@ const DataContext = React.createContext();
 //consumer consumes and uses that data
 
 class DataProvider extends Component {
+  
+
   state = {
     dogData: dogData,
     shelterData: shelterData,

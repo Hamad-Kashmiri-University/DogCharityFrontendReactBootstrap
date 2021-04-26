@@ -1,9 +1,21 @@
-import React, {Component} from 'react';
+import React, {Component, setState, useState } from 'react';
 import { DataConsumer } from '../Context.js';
 import Dogcard from '../Dogcard';
-
+import axios from 'axios';
 
 class Home extends Component {
+  state = {
+    dogs: []
+  };
+  componentDidMount() {
+   axios.get("https://africa-spider-3000.codio-box.uk/api/dogs/")
+  .then(res=> {
+    console.log(res)
+    this.setState({ dogs: res.data })
+  })
+    
+  }
+  
   render() {
     return (
       
@@ -16,8 +28,15 @@ class Home extends Component {
         <div className="row">
             <DataConsumer>
             {data => {
-             return data.dogData.map(item => {
-      return <Dogcard key={item.id} item={item} />
+             return this.state.dogs.map(dog => {
+      return <Dogcard  key={dog.id}
+                       name={dog.name} 
+                       traits={dog.traits}
+                       description={dog.description}
+                       age={dog.age}
+                       image={dog.imageURL}
+                       breed={dog.breed}
+                       gender={dog.gender}/>
       }) 
             }}
             </DataConsumer>
