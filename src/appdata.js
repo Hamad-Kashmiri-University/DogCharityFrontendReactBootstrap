@@ -1,6 +1,6 @@
 export const dogData = [{
   _id: 1,
-  name: "Rodney",
+  dogName: "Rodney",
   breed: "Pitbull",
   traits: ["Loveable", "Fast"],
   descripton: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates qui voluptate odio quod doloremque unde reprehenderit velit quaerat. Deserunt voluptatem natus suscipit aliquid, eligendi sequi dicta porro? Laudantium, libero est",
@@ -12,7 +12,7 @@ export const dogData = [{
 },
                           {
   _id: 2,
-  name: "Rodney",
+  dogName: "Rodney",
   breed: "Pitbull",
   Traits: ["Loveable", "Fast"],
   descripton: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates qui voluptate odio quod doloremque unde reprehenderit velit quaerat. Deserunt voluptatem natus suscipit aliquid, eligendi sequi dicta porro? Laudantium, libero est",
@@ -24,7 +24,7 @@ export const dogData = [{
 },
                           {
   _id: 3,
-  name: "Rodney",
+  dogName: "Rodney",
   breed: "Pitbull",
   Traits: ["Loveable", "Fast"],
   descripton: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates qui voluptate odio quod doloremque unde reprehenderit velit quaerat. Deserunt voluptatem natus suscipit aliquid, eligendi sequi dicta porro? Laudantium, libero est",
@@ -37,18 +37,18 @@ export const dogData = [{
 
 export const shelterData = [{
   
-  name: "London Shelter",
+  shelterName: "London Shelter",
   address: "12 pedestrian road",
   contactNo: 10
   
 },
 {
-  name: "London2 Shelter",
+  shelterName: "London2 Shelter",
   address: "13 pedestrian road",
   contactNo: 10
   
 }]
 
 export const favouriteData = [{
-  name: "favourite1"
+  favName: "favourite1"
 }]

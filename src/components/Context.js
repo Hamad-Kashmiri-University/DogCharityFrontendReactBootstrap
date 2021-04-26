@@ -15,8 +15,14 @@ class DataProvider extends Component {
     return (
       <DataContext.Provider value={{
       dogs: this.state.dogs,
-      shelters: this.state.dogs,
-      favourites: this.state.favourites
+      shelters: this.state.shelters,
+      favourites: this.state.favourites,
+      dogName: this.state.dogName,
+      breed: this.state.breed,
+      imageURL: this.state.imageURL,
+      traits: this.state.traits,
+      description: this.state.desciption,
+      age: this.state.age,
       }}>
       { this.props.children }
       </DataContext.Provider>

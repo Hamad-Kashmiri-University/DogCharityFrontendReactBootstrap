@@ -21,6 +21,6 @@
 .footer-primary {
   bottom: 0;
   margin-bottom: -100px;
-  position:absolute;
+  position:fixed;
   width: 100%;
 }
