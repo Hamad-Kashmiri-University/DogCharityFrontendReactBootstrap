@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class Login extends Component {
   render() {
     return (
-      <form style={{width: "20vw ", margin: 'auto', paddingTop: '10%'}}>
+      <form style={{width: "30vw ", margin: 'auto', paddingTop: '10%'}}>
       <h6 className="display-4" style={{paddingBottom: '20px'}}>Login</h6>
         <div className="form-group">
           <label for="exampleInputEmail1">Email address</label>

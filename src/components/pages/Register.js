@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class Register extends Component {
   render() {
     return (
- <form style={{width: "20vw ", margin: 'auto', paddingTop: '100PX'}}>
+ <form style={{width: "30vw ", margin: 'auto', paddingTop: '100PX'}}>
       <h6 className="display-4" style={{paddingBottom: '20px'}}>Register</h6>
         <div className="form-group">
           <label for="exampleInputName1">Name</label>
