@@ -3,7 +3,7 @@ import { DataConsumer } from './Context';
 import heart from '../images/heart.png';
 import { Modal, Button } from 'react-bootstrap';
 
-function Dogcard({name, traits, description, image, breed, gender, age, _id}) {
+function Dogcard({name, traits, description, image, breed, gender, age, id}) {
   const [show, setShow] = useState(false);
   const [showTwo, setShowTwo] = useState(false);
   const handleClose = () => setShow(false);
@@ -52,7 +52,7 @@ function Dogcard({name, traits, description, image, breed, gender, age, _id}) {
           <h4 className="display-5" style={{paddingTop: '10px'}}>Traits: {traits}</h4>
           <h4 className="display-5" style={{paddingTop: '10px'}}>Breed: {breed}</h4>
           <p style={{paddingTop: '20px', marginRight: '30px', marginLeft: '30px'}}>Bio: {description}
-        Deserunt voluptatem natus suscipit aliquid, eligendi sequi dicta porro? Laudantium, libero est"</p>
+        Deserunt voluptatem natus suscipit aliquid, eligendi sequi dicta porro? Laudantium, libero est {id}</p>
         </div></Modal.Body>
       </Modal>
 
@@ -64,27 +64,27 @@ function Dogcard({name, traits, description, image, breed, gender, age, _id}) {
       
         <div className="form-group">
           <label for="exampleInputName1">Name</label>
-          <input type="text" className="form-control" id="exampleInputName1" placeholder="Name"/>
+          <input type="text" className="form-control" id="exampleInputName1" placeholder={name}/>
         </div>
         <div className="form-group">
           <label for="exampleInputBreed1">Breed</label>
-          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter breed"/>
+          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder={breed}/>
         </div>
         <div className="form-group">
           <label for="exampleInputDescription1">Description</label>
-          <textarea className="form-control" rows="3" id="exampleInputDescription1" placeholder="Add a description"></textarea>
+          <textarea className="form-control" rows="3" id="exampleInputDescription1" placeholder={description}></textarea>
         </div>
         <div className="form-group">
           <label for="exampleInputImageURL1">Image URL</label>
-          <input type="text" className="form-control" id="exampleInputImageURL1" placeholder="Image URL"/>
+          <input type="text" className="form-control" id="exampleInputImageURL1" placeholder={image}/>
         </div>
         <div className="form-group">
           <label for="exampleInputAge1">Age</label>
-          <input type="number" className="form-control" id="exampleInputAge1" placeholder="Enter Age"/>
+          <input type="number" className="form-control" id="exampleInputAge1" placeholder={age}/>
         </div>
         <div className="form-group">
           <label for="exampleInputGender1">Gender</label>
-          <input type="text" className="form-control" id="exampleInputAge1" placeholder="Enter Gender"/>
+          <input type="text" className="form-control" id="exampleInputAge1" placeholder={gender}/>
         </div>
          
         <button type="submit" className="btn btn-primary" style = {{ background:'#F2AA4CFF', color: '#fff', float: 'center'}}>Submit</button>
