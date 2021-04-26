@@ -12,7 +12,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-md navbar-dark" style={{backgroundColor: "#101820FF"}}>
         <a href="#" className="navbar-brand">
             <img src = {logo} 
-    height="35" alt="CoolBrand" marginTop="10px" />
+    height="35" alt="CoolBrand" margintop="10px" />
         </a>
         <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span className="navbar-toggler-icon"></span>

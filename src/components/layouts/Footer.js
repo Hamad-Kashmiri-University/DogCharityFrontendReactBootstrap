@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export default function Footer() {
   return (
-   <footerStyle className="footer-primary"> 
+   <FooterStyle className="footer-primary"> 
     <div className="footer-main">
       <div className="container"> 
         <div className="row">
@@ -37,14 +37,14 @@ export default function Footer() {
         </div>
       </div>
     </div>
-   </footerStyle>
+   </FooterStyle>
   )
 }
 
-const footerStyle = styled.footer`
-  .footer-main {
-    background: var(--mainBlack);
-    padding-top: 3rem;
-color: var(main)
+const FooterStyle = styled.footer`
+//   .footer-main {
+//     background: var(--mainBlack);
+//     padding-top: 3rem;
+// color: var(main)
     }
 `;
