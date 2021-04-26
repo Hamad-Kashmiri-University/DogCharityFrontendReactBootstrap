@@ -20,6 +20,7 @@ import Profile from './components/pages/Profile';
 import Register from './components/pages/Register';
 import Shelters from './components/pages/Shelters';
 import Unauthorized from './components/pages/Unauthorized';
+import Edit from './components/pages/Edit';
 
 class App extends Component {
   render() {
@@ -32,9 +33,10 @@ class App extends Component {
           <Route path="/register" component={Register}/>
           <Route path="/login" component={Login}/>
           <Route path="/dogdetails" component={DogDetails}/>
-          <Route component={NotFound}/>
           <Route path="/not-authorized" component={Unauthorized}/>
-          <Route path="/Profile" component={Profile}/>
+          <Route path="/profile" component={Profile}/>
+          <Route path="/edit" component={Edit}/>
+          <Route component={NotFound}/>
         </Switch>
           <Footer />
         </div>
