@@ -30,6 +30,7 @@ class Home extends Component {
             {data => {
              return this.state.dogs.map(dog => {
       return <Dogcard  key={dog.id}
+                       id={dog._id}
                        name={dog.name} 
                        traits={dog.traits}
                        description={dog.description}

@@ -1,8 +1,15 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DataConsumer } from './Context';
 import heart from '../images/heart.png';
+import { Modal, Button } from 'react-bootstrap';
 
-function Dogcard({name, traits, description, image, breed, gender, age}) {
+function Dogcard({name, traits, description, image, breed, gender, age, _id}) {
+  const [show, setShow] = useState(false);
+  const [showTwo, setShowTwo] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleCloseTwo = () => setShowTwo(false);
+  const handleShowTwo = () => setShowTwo(true);
     return (  <div className="col-sm-6 col-md-6 col-lg-4 mt-5">
           <div style = { card }>
               <img style={{ display: 'block', width: '100%', height: '240px' }} src={image}/>
@@ -14,9 +21,6 @@ function Dogcard({name, traits, description, image, breed, gender, age}) {
                   <div style={ meta }>
                       <a>Traits: {traits}</a>
                   </div>
-                <div style= {{clear: 'both', marginTop: '.5em', color: 'rgba(0, 0, 0, .68)'}}>
-                      Gender: {gender}
-                  </div>
               </div>
               <div style = { cardfooter }>
                   <small>With us Since: Apr 21</small>
@@ -25,15 +29,68 @@ function Dogcard({name, traits, description, image, breed, gender, age}) {
   <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
 </svg></button></a>
 
-                  <a href='/edit'><button className="btn  float-right btn-sm" style = {{ marginRight: '-8px'}}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                  <a onClick={handleShowTwo}><button className="btn  float-right btn-sm" style = {{ marginRight: '-8px'}}><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-three-dots-vertical" viewBox="0 0 16 16">
   <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
 </svg></button></a>
-                  <a href='/dogdetails'>
+                  <a onClick={handleShow}>
                     <button className="btn float-right btn-sm" style = {{ background:'#F2AA4CFF', color: '#fff'}}>show more</button>
                   </a>
 
               </div>
           </div>
+          
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <h6 className="display-4">{name} Details</h6>
+        </Modal.Header>
+        <Modal.Body> 
+            <img className='img-fluid' src={image}></img>
+           <div className="container-fluid align-items-center" style={{opacity: '1', textAlign: 'center', color: '#101820FF', height: '45vh', backgroundPosition: 'center center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
+          <h1 className="display-2" style={{paddingTop: '10px'}}>{name}</h1>
+        <h4 className="display-5" style={{paddingTop: '10px'}}>Age: {age}</h4>
+          <h4 className="display-5" style={{paddingTop: '10px'}}>Gender: {gender}</h4>
+          <h4 className="display-5" style={{paddingTop: '10px'}}>Traits: {traits}</h4>
+          <h4 className="display-5" style={{paddingTop: '10px'}}>Breed: {breed}</h4>
+          <p style={{paddingTop: '20px', marginRight: '30px', marginLeft: '30px'}}>Bio: {description}
+        Deserunt voluptatem natus suscipit aliquid, eligendi sequi dicta porro? Laudantium, libero est"</p>
+        </div></Modal.Body>
+      </Modal>
+
+      <Modal show={showTwo} onHide={handleCloseTwo}>
+        <Modal.Header closeButton>
+         <h6 className="display-4">Edit a Dog</h6>
+        </Modal.Header>
+        <Modal.Body> <form style={{margin: 'auto'}}>
+      
+        <div className="form-group">
+          <label for="exampleInputName1">Name</label>
+          <input type="text" className="form-control" id="exampleInputName1" placeholder="Name"/>
+        </div>
+        <div className="form-group">
+          <label for="exampleInputBreed1">Breed</label>
+          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter breed"/>
+        </div>
+        <div className="form-group">
+          <label for="exampleInputDescription1">Description</label>
+          <textarea className="form-control" rows="3" id="exampleInputDescription1" placeholder="Add a description"></textarea>
+        </div>
+        <div className="form-group">
+          <label for="exampleInputImageURL1">Image URL</label>
+          <input type="text" className="form-control" id="exampleInputImageURL1" placeholder="Image URL"/>
+        </div>
+        <div className="form-group">
+          <label for="exampleInputAge1">Age</label>
+          <input type="number" className="form-control" id="exampleInputAge1" placeholder="Enter Age"/>
+        </div>
+        <div className="form-group">
+          <label for="exampleInputGender1">Gender</label>
+          <input type="text" className="form-control" id="exampleInputAge1" placeholder="Enter Gender"/>
+        </div>
+         
+        <button type="submit" className="btn btn-primary" style = {{ background:'#F2AA4CFF', color: '#fff', float: 'center'}}>Submit</button>
+</form></Modal.Body>
+
+      </Modal>
       </div>
 );
        
