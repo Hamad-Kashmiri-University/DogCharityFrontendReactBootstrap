@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
-class Profile extends Component {
-  render() {
+function Profile() {
     return (
  <form style={{width: "30vw", margin: 'auto', paddingTop: '60px'}}>
       <h6 className="display-4" style={{paddingBottom: '20px'}}>Add a Dog</h6>
@@ -33,7 +32,6 @@ class Profile extends Component {
         <button type="submit" className="btn btn-primary" style = {{ background:'#F2AA4CFF', color: '#fff', marginTop: '20px'}}>Submit</button>
 </form>
     )
-  }
 }
 
 export default Profile;
