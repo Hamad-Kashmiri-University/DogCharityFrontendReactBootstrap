@@ -19,7 +19,7 @@ class Home extends Component {
   render() {
     return (
       
-      <div className="container" style={{ marginTop: "50px"}}>
+      <div className="container" style={{ marginTop: "50px", marginBottom: '100px'}}>
       <div className="row">
          <div className="col lg-12 md-12 sm-12 ml-5">
       <h2 style={{ marginLeft: "-20px", width: "50%", float: "center", marginBottom: "-10px"}} className="display-4">Say Hi to Our Dogs</h2>

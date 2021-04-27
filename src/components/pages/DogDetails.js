@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 
 
-class DogDetails extends Component {
-  render() {      
+function DogDetails() {     
       return (
         <React.Fragment>
           <div className="container-fluid align-items-center" style={{textTransform: 'uppercase', textAlign: 'center', color: 'black', opacity: '0.75', height: '100vh', backgroundPosition: 'center center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover', backgroundImage: "url(" + "https://cdn.pixabay.com/photo/2016/02/19/15/46/labrador-retriever-1210559__340.jpg" + ")"}}>
@@ -14,7 +13,7 @@ class DogDetails extends Component {
         </div>
         </React.Fragment>
         );
-  }
+  
 }
 
 export default DogDetails;

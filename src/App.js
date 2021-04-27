@@ -42,9 +42,9 @@ function App() {
           <Route path="/login" component={Login}/>
           <Route path="/dogdetails" component={DogDetails}/>
           <Route path="/not-authorized" component={Unauthorized}/>
-          { loggedIn === true &&  <> <Route path="/add-dog" component={Profile}/></>}  
           <Route path="/edit" component={Edit}/>
           <Route path="/search" component={Search}/>
+          { loggedIn === true &&  <> <Route path="/add-dog" component={Profile}/></>}  
           <Route component={NotFound}/>
 
           </Switch>
