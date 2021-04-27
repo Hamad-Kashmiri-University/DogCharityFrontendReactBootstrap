@@ -12,8 +12,17 @@ function AuthProvider(props) {
   
   
   const getLogIn = async () => {
-    const logInBoolRes = axios.get("https://africa-spider-3000.codio-box.uk/api/auth/loggedIn/");
+  
+    const token = localStorage.getItem('jwtoken');
+    const logInBoolRes = await axios.get("https://africa-spider-3000.codio-box.uk/api/auth/loggedIn/", {
+                                          headers: {
+                                          'x-jwtoken': token
+                                                              }
+                                                            }
+                                                          );
+    console.log(logInBoolRes)
     setLoggedIn(logInBoolRes.data); 
+    
     //set true or false if loggedin
   }
   

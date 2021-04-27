@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import logo from '../../images/logo.png';
 import home from '../../images/homeIcon.png';
 import shelter from '../../images/shelterIcon.png';
@@ -8,10 +8,13 @@ import search from '../../images/search.png';
 import register from '../../images/register.png';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import AuthContext from '../../context/AuthContext'
 
 export default function Navbar() {
   
+  const { loggedIn } = useContext(AuthContext); //destructure to get property  
 
+  
   return (
     <nav className="navbar navbar-expand-md navbar-dark" style={{backgroundColor: "#101820FF"}}>
         <a href="#" className="navbar-brand">
@@ -29,10 +32,24 @@ export default function Navbar() {
                 <a href="/" className="nav-item nav-link">About&nbsp;<img src={about} height="15"/></a>
                 <a href="/search" className="nav-item nav-link">Search&nbsp;<img src={search} height="16"/></a>
             </div>
-            <div className="navbar-nav ml-auto">
+            {
+              !loggedIn && (
+              <div className="navbar-nav ml-auto">
                 <a href="/register" className="nav-item nav-link">Register&nbsp;<img src={register} height="15"/></a>
                 <a href="/login" className="nav-item nav-link">Login&nbsp;<img src={login} height="14"/></a>
-            </div>
+              </div>
+              )
+            }
+            {
+              loggedIn && (
+              <div className="navbar-nav ml-auto">
+                <a href="/register" className="nav-item nav-link">Add Dog&nbsp;<img src={register} height="15"/></a>
+                <a href="/login" className="nav-item nav-link">Favourites&nbsp;<img src={login} height="14"/></a>
+              </div>
+              )
+              
+            }
+
         </div>
     </nav>
   )}

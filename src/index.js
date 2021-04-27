@@ -2,12 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import axios from 'axios';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { DataProvider } from './components/Context';
 import { AuthProvider } from './context/AuthContext';
 //import login context above
 
+axios.defaults.withCredentials = true;
+
+//auth provider lets routes know if logged in or not
 ReactDOM.render(
   <AuthProvider>
   <DataProvider>  

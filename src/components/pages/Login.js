@@ -1,6 +1,7 @@
 import React, {Component, useState} from 'react';
 import axios from 'axios';
 import Cookies from 'universal-cookie';
+
 function Login() {
 
 
@@ -20,9 +21,9 @@ function Login() {
     if (res.status == 200 ) {
       console.log("success, user logged in")
       const token = res.data
-      const cookies = new Cookies();
-      cookies.set('x-jwtoken', token, { path: '/' });
-      console.log(cookies.get('x-jwtoken')); 
+      localStorage.setItem('jwtoken', token);
+//       const cookies = new Cookies();
+//       cookies.set('jwtoken', token);
   
     } else {
       console.log(res.status)
