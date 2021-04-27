@@ -26,9 +26,7 @@ class Home extends Component {
         </div>
       </div>
         <div className="row">
-            <DataConsumer>
-            {data => {
-             return this.state.dogs.map(dog => {
+            { this.state.dogs.map(dog => {
       return <Dogcard  key={dog.id}
                        id={dog._id}
                        name={dog.name} 
@@ -38,9 +36,9 @@ class Home extends Component {
                        image={dog.imageURL}
                        breed={dog.breed}
                        gender={dog.gender}/>
-      }) 
-            }}
-            </DataConsumer>
+            }) 
+            }
+
         </div>
       </div>
     );

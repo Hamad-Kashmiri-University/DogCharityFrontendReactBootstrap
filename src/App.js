@@ -26,7 +26,7 @@ import Search from './components/pages/Search';
 class App extends Component {
   render() {
       return (
-        <div>
+          <div>
           <Navbar />
           <Switch>
           <Route exact path="/" component={Home}/>
@@ -39,9 +39,9 @@ class App extends Component {
           <Route path="/edit" component={Edit}/>
           <Route path="/search" component={Search}/>
           <Route component={NotFound}/>
-        </Switch>
+          </Switch>
           <Footer />
-        </div>
+          </div>
   
   );
 }
