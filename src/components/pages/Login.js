@@ -1,10 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import AuthContext from '../../context/AuthContext'
 // import Cookies from 'universal-cookie';
 
 function Login() {
 
-
+  const { getLogIn } = useContext(AuthContext); //destructure to get property  
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   
@@ -18,6 +21,8 @@ function Login() {
       }
     
     const res = await axios.post("https://africa-spider-3000.codio-box.uk/api/auth/", loginData);
+    await getLogIn();
+    history.push("/")
     if (res.status === 200 ) {
       console.log("success, user logged in")
       const token = res.data

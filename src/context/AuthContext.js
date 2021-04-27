@@ -11,7 +11,7 @@ function AuthProvider(props) {
   
   
   
-  const getLogIn = async () => {
+  async function getLogIn() {
   
     const token = localStorage.getItem('jwtoken');
     const logInBoolRes = await axios.get("https://africa-spider-3000.codio-box.uk/api/auth/loggedIn/", {
@@ -22,6 +22,7 @@ function AuthProvider(props) {
                                                           );
     console.log(logInBoolRes)
     setLoggedIn(logInBoolRes.data); 
+    return loggedIn;
     
     //set true or false if loggedin
   }

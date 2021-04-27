@@ -12,8 +12,12 @@ import AuthContext from '../../context/AuthContext'
 
 export default function Navbar() {
   
-  const { loggedIn } = useContext(AuthContext); //destructure to get property  
-
+  const { loggedIn, getLogIn } = useContext(AuthContext); //destructure to get property  
+  
+  async function logOut() {
+    localStorage.removeItem("jwtoken");
+    await getLogIn();
+  }
   
   return (
     <nav className="navbar navbar-expand-md navbar-dark" style={{backgroundColor: "#101820FF"}}>
@@ -45,6 +49,7 @@ export default function Navbar() {
               <div className="navbar-nav ml-auto">
                 <a href="/add-dog" className="nav-item nav-link">Add Dog&nbsp;<img src={register} height="15"/></a>
                 <a href="/favourites" className="nav-item nav-link">Favourites&nbsp;<img src={login} height="14"/></a>
+                <a href="/" onClick={logOut} className="nav-item nav-link">Logout</a>
               </div>
               )
               

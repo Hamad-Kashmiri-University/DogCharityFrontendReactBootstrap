@@ -1,14 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import axios from 'axios';
 import  { Redirect } from 'react-router-dom'
-
+import { useHistory } from 'react-router-dom';
+import AuthContext from '../../context/AuthContext'
 function Register() {
-
+  
+  const history = useHistory();
   const [name, setName] = useState("");  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signUpCode, setSignUpCode] = useState("");
-  
+  const { getLogIn } = useContext(AuthContext); //destructure to get property  
+
   //pass event data from fields
   async function register(e) {
     e.preventDefault();
@@ -19,6 +22,8 @@ function Register() {
       }
     
     const res = await axios.post("https://africa-spider-3000.codio-box.uk/api/users/", registerUserData);
+    await getLogIn();
+    history.push("/login")
     if (res.status == 200 ) {
       console.log("success, user registered")
     } else {
