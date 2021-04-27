@@ -1,6 +1,6 @@
-import React, {Component, useState} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
-import Cookies from 'universal-cookie';
+// import Cookies from 'universal-cookie';
 
 function Login() {
 
@@ -18,7 +18,7 @@ function Login() {
       }
     
     const res = await axios.post("https://africa-spider-3000.codio-box.uk/api/auth/", loginData);
-    if (res.status == 200 ) {
+    if (res.status === 200 ) {
       console.log("success, user logged in")
       const token = res.data
       localStorage.setItem('jwtoken', token);

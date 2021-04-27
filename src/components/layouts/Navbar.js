@@ -33,7 +33,7 @@ export default function Navbar() {
                 <a href="/search" className="nav-item nav-link">Search&nbsp;<img src={search} height="16"/></a>
             </div>
             {
-              !loggedIn && (
+              loggedIn === false && (
               <div className="navbar-nav ml-auto">
                 <a href="/register" className="nav-item nav-link">Register&nbsp;<img src={register} height="15"/></a>
                 <a href="/login" className="nav-item nav-link">Login&nbsp;<img src={login} height="14"/></a>
@@ -41,10 +41,10 @@ export default function Navbar() {
               )
             }
             {
-              loggedIn && (
+              loggedIn === true && (
               <div className="navbar-nav ml-auto">
-                <a href="/register" className="nav-item nav-link">Add Dog&nbsp;<img src={register} height="15"/></a>
-                <a href="/login" className="nav-item nav-link">Favourites&nbsp;<img src={login} height="14"/></a>
+                <a href="/add-dog" className="nav-item nav-link">Add Dog&nbsp;<img src={register} height="15"/></a>
+                <a href="/favourites" className="nav-item nav-link">Favourites&nbsp;<img src={login} height="14"/></a>
               </div>
               )
               

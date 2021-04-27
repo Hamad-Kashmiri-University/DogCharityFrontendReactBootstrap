@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { DataConsumer } from '../Context';
 
 
 class DogDetails extends Component {

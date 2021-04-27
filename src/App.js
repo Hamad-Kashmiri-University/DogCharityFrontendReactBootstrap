@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useContext } from 'react';
+
+//bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -23,8 +25,13 @@ import Unauthorized from './components/pages/Unauthorized';
 import Edit from './components/pages/Edit';
 import Search from './components/pages/Search';
 
-class App extends Component {
-  render() {
+//context
+import AuthContext from './context/AuthContext';
+
+function App() {
+  
+    const {loggedIn} = useContext(AuthContext);
+  console.log(loggedIn)
       return (
           <div>
           <Navbar />
@@ -35,16 +42,15 @@ class App extends Component {
           <Route path="/login" component={Login}/>
           <Route path="/dogdetails" component={DogDetails}/>
           <Route path="/not-authorized" component={Unauthorized}/>
-          <Route path="/profile" component={Profile}/>
+          { loggedIn === true &&  <> <Route path="/add-dog" component={Profile}/></>}  
           <Route path="/edit" component={Edit}/>
           <Route path="/search" component={Search}/>
           <Route component={NotFound}/>
+
           </Switch>
-          <Footer />
-          </div>
+          <Footer />          </div>
   
   );
-}
 
 }
 
