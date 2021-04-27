@@ -21,6 +21,7 @@ import Register from './components/pages/Register';
 import Shelters from './components/pages/Shelters';
 import Unauthorized from './components/pages/Unauthorized';
 import Edit from './components/pages/Edit';
+import Search from './components/pages/Search';
 
 class App extends Component {
   render() {
@@ -36,6 +37,7 @@ class App extends Component {
           <Route path="/not-authorized" component={Unauthorized}/>
           <Route path="/profile" component={Profile}/>
           <Route path="/edit" component={Edit}/>
+          <Route path="/search" component={Search}/>
           <Route component={NotFound}/>
         </Switch>
           <Footer />

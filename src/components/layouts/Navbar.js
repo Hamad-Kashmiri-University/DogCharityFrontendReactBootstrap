@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../../images/logo.png';
 import home from '../../images/homeIcon.png';
 import shelter from '../../images/shelterIcon.png';
 import about from '../../images/aboutIcon.png';
 import login from '../../images/login.png';
+import search from '../../images/search.png';
 import register from '../../images/register.png';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Navbar() {
+  
+
   return (
     <nav className="navbar navbar-expand-md navbar-dark" style={{backgroundColor: "#101820FF"}}>
         <a href="#" className="navbar-brand">
@@ -23,10 +27,7 @@ export default function Navbar() {
                 <a href="/" className="nav-item nav-link">Home&nbsp;<img src={home} height="16"/></a>
                 <a href="/shelters" className="nav-item nav-link">Shelters&nbsp;<img src={shelter} height="20"/></a>
                 <a href="/" className="nav-item nav-link">About&nbsp;<img src={about} height="15"/></a>
-            </div>
-            <div className="navbar-nav ml-auto">
-              <input className="form-control mr-sm-2" style = {{display:'inline-block'}} type="search" placeholder="Search" aria-label="Search"/>
-                <button className="btn" style = {{ background:'#F2AA4CFF', color: '#fff', marginRight: '200px'}} type="submit">Search</button>
+                <a href="/search" className="nav-item nav-link">Search&nbsp;<img src={search} height="16"/></a>
             </div>
             <div className="navbar-nav ml-auto">
                 <a href="/register" className="nav-item nav-link">Register&nbsp;<img src={register} height="15"/></a>
