@@ -23,6 +23,7 @@ function Login() {
     const res = await axios.post("https://africa-spider-3000.codio-box.uk/api/auth/", loginData);
     await getLogIn();
     history.push("/")
+    window.location.reload(false);
     if (res.status === 200 ) {
       console.log("success, user logged in")
       const token = res.data

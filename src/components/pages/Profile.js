@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 function Profile() {
   
+  const history = useHistory();
   const [name, setName] = useState("");
   const [breed, setBreed] = useState("");
   const [description, setDescription] = useState("");
@@ -22,6 +24,7 @@ function Profile() {
     const res = await axios.post("https://africa-spider-3000.codio-box.uk/api/dogs/", 
                                  newDogData,
                                  {headers: {'x-jwtoken': token }});
+    history.push("/")
     
     }catch (err) {
       console.error(err);

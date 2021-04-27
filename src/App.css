@@ -13,7 +13,7 @@
 
 .footer-end {
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 2rem;
 }
 
 .footer-primary {
@@ -36,3 +36,4 @@
 .modal-backdrop {
    background-color: #F2AA4CFF;
 }
+
