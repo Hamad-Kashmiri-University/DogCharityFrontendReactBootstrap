@@ -11,6 +11,7 @@ import { useHistory } from 'react-router-dom';
 function Dogcard({dogname, dogtraits, dogdescription, dogimage, dogbreed, doggender, dogage, dogid}) {
   
   const history = useHistory();
+  
   async function editDog(e) {
     e.preventDefault();
     try{
@@ -42,6 +43,24 @@ function Dogcard({dogname, dogtraits, dogdescription, dogimage, dogbreed, doggen
     }
   }
   
+  async function postFavourite(e) {
+    e.preventDefault();
+    try {
+    const token = localStorage.getItem('jwtoken');
+    
+    const favouriteData={dogID: dogid}
+    console.log(favouriteData);
+    
+    const res = await axios.post("https://africa-spider-3000.codio-box.uk/api/favourites/",
+                                 favouriteData,
+                                 {headers: {'x-jwtoken': token }});
+    history.push('/favourites');
+    
+    }catch (err) {
+      console.error(err);
+    }
+  }
+  
   //form states
   const [name, setName] = useState("");
   const [breed, setBreed] = useState("");
@@ -65,11 +84,17 @@ function Dogcard({dogname, dogtraits, dogdescription, dogimage, dogbreed, doggen
           <div style = { card }>
               <img style={{ display: 'block', width: '100%', height: '240px' }} src={dogimage}/>
               <div style={ cardblock }>
-                <a href='#'>
-                  <figure style = { profile } >
-                    <img src={heart} style = {{display: 'block', width: '100%', height: '100%', borderRadius: '50%'}} alt=""/>
+                
+                {
+                  loggedIn === true && (<><form onSubmit={postFavourite}><a>
+                                   <figure style = { profile } >
+                    <button className="btn float-right btn-sm" style = {{ background:'#F2AA4CFF', color: '#fff'}}>Like</button>
                   </figure>
                 </a>
+                </form></>
+                  )
+                }
+ 
                   <h4 className="mt-3" style={{fontSize: '1.28571429em', fontWeight: '700', lineHeight: '1.2857em'}}>{dogname}</h4>
                   <div style={ meta}>
                       <a>Traits: {dogtraits}</a>
@@ -91,7 +116,7 @@ function Dogcard({dogname, dogtraits, dogdescription, dogimage, dogbreed, doggen
             }
 
                   <a onClick={handleShow}>
-                    <button className="btn float-right btn-sm" style = {{ background:'#F2AA4CFF', color: '#fff'}}>show more</button>
+                    <button className="btn float-right btn-sm" style = {{ background:'#F2AA4CFF', color: '#fff'}}>Show More</button>
                   </a>
 
               </div>
@@ -110,7 +135,7 @@ function Dogcard({dogname, dogtraits, dogdescription, dogimage, dogbreed, doggen
           <h4 className="display-5" style={{paddingTop: '10px'}}>Traits: {dogtraits}</h4>
           <h4 className="display-5" style={{paddingTop: '10px'}}>Breed: {dogbreed}</h4>
           <p style={{paddingTop: '20px', marginRight: '30px', marginLeft: '30px'}}>Bio: {dogdescription}
-        Deserunt voluptatem natus suscipit aliquid, eligendi sequi dicta porro? Laudantium, libero est {dogid}</p>
+         </p>
         </div></Modal.Body>
       </Modal>
 
@@ -189,12 +214,11 @@ const profile = {
     display: 'inline-block',
     overflow: 'hidden',
     boxSizing: 'border-box',
-    width: '30px',
+    width: '50px',
     height: '30px',
     margin: '0',
-    border: '1px solid #fff',
-    borderRadius: '50%',
-    marginTop: '-5px'
+    marginTop: '-5px',
+    color: '#F2AA4CFF'
 }
 
 const cardfooter = {

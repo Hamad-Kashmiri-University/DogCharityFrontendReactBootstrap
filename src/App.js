@@ -24,6 +24,8 @@ import Shelters from './components/pages/Shelters';
 import Unauthorized from './components/pages/Unauthorized';
 import Edit from './components/pages/Edit';
 import Search from './components/pages/Search';
+import Favourites from './components/pages/Favourites';
+
 
 //context
 import AuthContext from './context/AuthContext';
@@ -43,6 +45,7 @@ function App() {
           <Route path="/dogdetails" component={DogDetails}/>
           <Route path="/not-authorized" component={Unauthorized}/>
           <Route path="/edit" component={Edit}/>
+          <Route path="/favourites" component={Favourites}/>
           <Route path="/search" component={Search}/>
           { loggedIn === true &&  <> <Route path="/add-dog" component={Profile}/></>}  
           <Route component={NotFound}/>
