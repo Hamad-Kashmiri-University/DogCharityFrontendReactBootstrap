@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -72,4 +72,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 =======
 # FrontendAPI
 Frontend for 6003cem module using ReactJS
->>>>>>> 36dfc0748286cb1ada9e695dcce03c3ba61ab2ef
