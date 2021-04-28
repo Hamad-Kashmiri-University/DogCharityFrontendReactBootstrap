@@ -10,6 +10,14 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import AuthContext from '../../context/AuthContext'
 
+/**
+
+* @function AuthProvider
+
+* @returns rendered Navbar component
+
+*/ 
+
 export default function Navbar() {
   
   const { loggedIn, getLogIn } = useContext(AuthContext); //destructure to get property  

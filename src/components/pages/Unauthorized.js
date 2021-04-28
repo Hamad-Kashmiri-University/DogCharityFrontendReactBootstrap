@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
 
+/**
+
+* @class Unauthorized page component class
+
+* @returns returns rendered page 
+
+*/
+
 class Unauthorized extends Component {
   render() {
     return (

@@ -3,15 +3,38 @@ import axios from 'axios';
 import  { Redirect } from 'react-router-dom'
 import { useHistory } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext'
+
+/**
+
+* @function Register page functional component
+
+* @returns returns rendered page 
+
+*/
+
+
 function Register() {
   
+/**
+
+* @constant history for redirect
+
+*/
   const history = useHistory();
+
   const [name, setName] = useState("");  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [signUpCode, setSignUpCode] = useState("");
   const { getLogIn } = useContext(AuthContext); //destructure to get property  
 
+/**
+
+* @function register
+
+* @returns redirects if successful axios register req
+
+*/  
   //pass event data from fields
   async function register(e) {
     e.preventDefault();

@@ -1,4 +1,14 @@
 import React from 'react';
+
+/**
+
+* @function favourite card
+
+* @params { object } holds data from axios req in parent component
+
+* @description holds card for favourites
+
+*/ 
  
 function FavouriteCard({favId, favDogName, favDogImage}) {
   

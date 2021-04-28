@@ -1,5 +1,13 @@
 import React, {Component} from 'react';
 
+/**
+
+* @class Edit page component class
+
+* @returns returns rendered page 
+
+*/
+
 class Edit extends Component {
   render() {
     return (

@@ -3,10 +3,26 @@ import { DataConsumer } from '../Context.js';
 import FavouriteCard from '../FavouriteCard';
 import axios from 'axios';
 
+/**
+
+* @class Unauthorized page component class
+
+* @returns returns rendered page 
+
+*/
+
 class Favourites extends Component {
   state = {
     favourites: []
   };
+  
+/**
+
+* @function component did mount for favourites
+
+* @description sets state of favourites to favourites from api so they can be rendered
+
+*/  
   componentDidMount() {
    const token = localStorage.getItem('jwtoken');
    axios.get("https://africa-spider-3000.codio-box.uk/api/favourites/", {

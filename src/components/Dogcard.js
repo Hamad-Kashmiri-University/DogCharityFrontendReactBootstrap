@@ -6,12 +6,30 @@ import AuthContext from '../context/AuthContext'
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
+/**
 
+* @function Dog card
+
+* @params {object} object holding data passed in from axios request
+
+* @returns rendered dogcard component
+
+*/ 
 
 function Dogcard({dogname, dogtraits, dogdescription, dogimage, dogbreed, doggender, dogage, dogid}) {
   
   const history = useHistory();
   
+/**
+
+* @function edit dog
+
+* @description function makes put req to backend
+
+* @returns redirect to main page after dog updated successfully
+
+*/ 
+
   async function editDog(e) {
     e.preventDefault();
     try{
@@ -29,6 +47,16 @@ function Dogcard({dogname, dogtraits, dogdescription, dogimage, dogbreed, doggen
     }
   }
   
+/**
+
+* @function delete dog
+
+* @description function makes delete req to backend
+
+* @returns reload page if successful
+
+*/ 
+  
   async function deleteDog(e) {
     e.preventDefault();
     try {
@@ -42,6 +70,16 @@ function Dogcard({dogname, dogtraits, dogdescription, dogimage, dogbreed, doggen
       console.error(err);
     }
   }
+  
+/**
+
+* @function add favourite
+
+* @description function makes post req to backend
+
+* @returns reload page if successful
+
+*/ 
   
   async function postFavourite(e) {
     e.preventDefault();

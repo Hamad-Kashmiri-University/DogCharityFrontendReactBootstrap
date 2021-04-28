@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Dogcard.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Dogcard.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect, useContext } from 'react';
+import { DataConsumer } from './Context';
+import heart from '../images/heart.png';
+import { Modal, Button } from 'react-bootstrap';
+import AuthContext from '../context/AuthContext'
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+
+/**
+
+* @function Dog card
+
+* @params {object} object holding data passed in from axios request
+
+* @returns rendered dogcard component
+
+*/ 
+
+function Dogcard({dogname, dogtraits, dogdescription, dogimage, dogbreed, doggender, dogage, dogid}) {
+  
+  const history = useHistory();
+  
+/**
+
+* @function edit dog
+
+* @description function makes put req to backend
+
+* @returns redirect to main page after dog updated successfully
+
+*/ 
+
+  async function editDog(e) {
+    e.preventDefault();
+    try{
+      const dogData = {
+        name, breed, description, imageURL, age, gender
+      }
+    const token = localStorage.getItem('jwtoken');
+    const res = await axios.put(`https://africa-spider-3000.codio-box.uk/api/dogs/${dogid}/`, 
+                                 dogData,
+                                 {headers: {'x-jwtoken': token }});
+    window.location.reload(false);
+    
+    }catch (err) {
+      console.error(err);
+    }
+  }
+  
+/**
+
+* @function delete dog
+
+* @description function makes delete req to backend
+
+* @returns reload page if successful
+
+*/ 
+  
+  async function deleteDog(e) {
+    e.preventDefault();
+    try {
+    const token = localStorage.getItem('jwtoken');
+    
+    const res = await axios.delete(`https://africa-spider-3000.codio-box.uk/api/dogs/${dogid}/`, 
+                                 {headers: {'x-jwtoken': token }});
+    window.location.reload(false);
+    
+    }catch (err) {
+      console.error(err);
+    }
+  }
+  
+/**
+
+* @function add favourite
+
+* @description function makes post req to backend
+
+* @returns reload page if successful
+
+*/ 
+  
+  async function postFavourite(e) {
+    e.preventDefault();
+    try {
+    const token = localStorage.getItem('jwtoken');
+    
+    const favouriteData={dogID: dogid}
+    console.log(favouriteData);
+    
+    const res = await axios.post("https://africa-spider-3000.codio-box.uk/api/favourites/",
+                                 favouriteData,
+                                 {headers: {'x-jwtoken': token }});
+    history.push('/favourites');
+    
+    }catch (err) {
+      console.error(err);
+    }
+  }
+  
+  //form states
+  const [name, setName] = useState("");
+  const [breed, setBreed] = useState("");
+  const [description, setDescription] = useState("");
+  const [imageURL, setImageURL] = useState("");
+  const [age, setAge] = useState(0);
+  const [gender, setGender] = useState("");
+  
+  
+  //login 
+  const { loggedIn } = useContext(AuthContext);
+  
+  //modals
+  const [show, setShow] = useState(false);
+  const [showTwo, setShowTwo] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleCloseTwo = () => setShowTwo(false);
+  const handleShowTwo = () => setShowTwo(true);
+    return (  &lt;div className="col-sm-6 col-md-6 col-lg-4 mt-5">
+          &lt;div style = { card }>
+              &lt;img style={{ display: 'block', width: '100%', height: '240px' }} src={dogimage}/>
+              &lt;div style={ cardblock }>
+                
+                {
+                  loggedIn === true &amp;&amp; (&lt;>&lt;form onSubmit={postFavourite}>&lt;a>
+                                   &lt;figure style = { profile } >
+                    &lt;button className="btn float-right btn-sm" style = {{ background:'#F2AA4CFF', color: '#fff'}}>Like&lt;/button>
+                  &lt;/figure>
+                &lt;/a>
+                &lt;/form>&lt;/>
+                  )
+                }
+ 
+                  &lt;h4 className="mt-3" style={{fontSize: '1.28571429em', fontWeight: '700', lineHeight: '1.2857em'}}>{dogname}&lt;/h4>
+                  &lt;div style={ meta}>
+                      &lt;a>Traits: {dogtraits}&lt;/a>
+                  &lt;/div>
+              &lt;/div>
+              &lt;div style = { cardfooter }>
+                  &lt;small style={{marginBottom: '100px !important', position: 'absolute'}}>With us Since: Apr 21&lt;/small>
+            {loggedIn===true &amp;&amp; (&lt;>&lt;form onSubmit={deleteDog} style={{marginTop: ''}}>
+              &lt;a >&lt;button className="btn float-right btn-sm" style = {{ marginRight: '-8px'}}>&lt;svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash" viewBox="0 0 16 16">
+  &lt;path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+  &lt;path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+&lt;/svg>&lt;/button>&lt;/a>&lt;/form>
+
+                  &lt;a onClick={handleShowTwo}>&lt;button className="btn  float-right btn-sm" style = {{ marginRight: '-8px'}}>&lt;svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+  &lt;path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+&lt;/svg>&lt;/button>&lt;/a>
+           &lt;/> )
+              
+            }
+
+                  &lt;a onClick={handleShow}>
+                    &lt;button className="btn float-right btn-sm" style = {{ background:'#F2AA4CFF', color: '#fff'}}>Show More&lt;/button>
+                  &lt;/a>
+
+              &lt;/div>
+          &lt;/div>
+          
+      &lt;Modal show={show} onHide={handleClose}>
+        &lt;Modal.Header closeButton>
+          &lt;h6 className="display-4">{dogname} Details&lt;/h6>
+        &lt;/Modal.Header>
+        &lt;Modal.Body> 
+            &lt;img className='img-fluid' src={dogimage}>&lt;/img>
+           &lt;div className="container-fluid align-items-center" style={{opacity: '1', textAlign: 'center', color: '#101820FF', height: '45vh', backgroundPosition: 'center center', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
+          &lt;h1 className="display-2" style={{paddingTop: '10px'}}>{dogname}&lt;/h1>
+        &lt;h4 className="display-5" style={{paddingTop: '10px'}}>Age: {dogage}&lt;/h4>
+          &lt;h4 className="display-5" style={{paddingTop: '10px'}}>Gender: {doggender}&lt;/h4>
+          &lt;h4 className="display-5" style={{paddingTop: '10px'}}>Traits: {dogtraits}&lt;/h4>
+          &lt;h4 className="display-5" style={{paddingTop: '10px'}}>Breed: {dogbreed}&lt;/h4>
+          &lt;p style={{paddingTop: '20px', marginRight: '30px', marginLeft: '30px'}}>Bio: {dogdescription}
+         &lt;/p>
+        &lt;/div>&lt;/Modal.Body>
+      &lt;/Modal>
+
+      &lt;Modal show={showTwo} onHide={handleCloseTwo}>
+        &lt;Modal.Header closeButton>
+         &lt;h6 className="display-4">Edit a Dog&lt;/h6>
+        &lt;/Modal.Header>
+        &lt;Modal.Body> &lt;form onSubmit={editDog} style={{margin: 'auto'}}>
+      
+        &lt;div className="form-group">
+          &lt;label for="exampleInputName1">Name&lt;/label>
+          &lt;input type="text" className="form-control" id="exampleInputName1" placeholder={dogname} onChange={(e) => setName(e.target.value)} value={name}/>
+        &lt;/div>
+        &lt;div className="form-group">
+          &lt;label for="exampleInputBreed1">Breed&lt;/label>
+          &lt;input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder={dogbreed} onChange={(e) => setBreed(e.target.value)} value={breed}/>
+        &lt;/div>
+        &lt;div className="form-group">
+          &lt;label for="exampleInputDescription1">Description&lt;/label>
+          &lt;textarea className="form-control" rows="3" id="exampleInputDescription1" placeholder={dogdescription} onChange={(e) => setDescription(e.target.value)} value={description}>&lt;/textarea>
+        &lt;/div>
+        &lt;div className="form-group">
+          &lt;label for="exampleInputImageURL1">Image URL&lt;/label>
+          &lt;input type="text" className="form-control" id="exampleInputImageURL1" placeholder={dogimage} onChange={(e) => setImageURL(e.target.value)} value={imageURL}/>
+        &lt;/div>
+        &lt;div className="form-group">
+          &lt;label for="exampleInputAge1">Age&lt;/label>
+          &lt;input type="number" className="form-control" id="exampleInputAge1" placeholder={dogage} onChange={(e) => setAge(e.target.value)} value={age}/>
+        &lt;/div>
+        &lt;div className="form-group">
+          &lt;label for="exampleInputGender1">Gender&lt;/label>
+          &lt;input type="text" className="form-control" id="exampleInputAge1" placeholder={doggender} onChange={(e) => setGender(e.target.value)} value={gender}/>
+        &lt;/div>
+         
+        &lt;button type="submit" className="btn btn-primary" style = {{ background:'#F2AA4CFF', color: '#fff', float: 'center'}}>Submit&lt;/button>
+&lt;/form>&lt;/Modal.Body>
+
+      &lt;/Modal>
+      &lt;/div>
+);
+       
+};
+
+
+
+
+
+const cardblock = {
+    fontSize: '1em',
+    position: 'relative',
+    margin: '0',
+    padding: '1em',
+    border: 'none',
+    borderTop: '1px solid rgba(34, 36, 38, .1)',
+    boxShadow: 'none',
+}
+
+const meta = {
+    fontSize: '1em',
+    color: 'rgba(242,170,76,0.9)'
+}
+
+const card = {
+    fontSize: '1em',
+    overFlow: 'hidden',
+    padding: '0',
+    border: 'none',
+    borderRadius: '.28571429rem',
+    boxShadow: '0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5',
+    margin: '20px'
+}
+
+const profile = {
+    position: 'absolute',
+    top: '-12px',
+    display: 'inline-block',
+    overflow: 'hidden',
+    boxSizing: 'border-box',
+    width: '50px',
+    height: '30px',
+    margin: '0',
+    marginTop: '-5px',
+    color: '#F2AA4CFF'
+}
+
+const cardfooter = {
+    fontSize: '1em',
+    position: 'static',
+    top: '0',
+    left: '0',
+    maxWidth: '100%',
+    padding: '.75em 1em',
+    color: 'rgba(0, 0, 0, .4)',
+    borderTop: '1px solid rgba(0, 0, 0, .05) !important',
+    background: '#fff',
+    overflow: 'hidden'
+}
+
+
+export default Dogcard;
+
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Edit.html">Edit</a></li><li><a href="Favourites.html">Favourites</a></li><li><a href="Home.html">Home</a></li><li><a href="Login.html">Login</a></li><li><a href="NotFound.html">NotFound</a></li><li><a href="Unauthorized.html">Unauthorized</a></li></ul><h3>Global</h3><ul><li><a href="global.html#adddog">add dog</a></li><li><a href="global.html#addfavourite">add favourite</a></li><li><a href="global.html#AuthProvider">AuthProvider</a></li><li><a href="global.html#componentdidmountforfavourites">component did mount for favourites</a></li><li><a href="global.html#componentdidmountforhome">component did mount for home</a></li><li><a href="global.html#deletedog">delete dog</a></li><li><a href="global.html#Dogcard">Dog card</a></li><li><a href="global.html#editdog">edit dog</a></li><li><a href="global.html#favouritecard">favourite card</a></li><li><a href="global.html#getdogs">get dogs</a></li><li><a href="global.html#getlogin">get log in</a></li><li><a href="global.html#getsearch">get search</a></li><li><a href="global.html#history">history</a></li><li><a href="global.html#login">login</a></li><li><a href="global.html#Profilepagefunctionalcomponent">Profile page functional component</a></li><li><a href="global.html#register">register</a></li><li><a href="global.html#Registerpagefunctionalcomponent">Register page functional component</a></li><li><a href="global.html#Searchpagefunctionalcomponent">Search page functional component</a></li><li><a href="global.html#state">state</a></li><li><a href="global.html#updatesearch">update search</a></li><li><a href="global.html#useeffect">use effect</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Wed Apr 28 2021 08:10:11 GMT+0000 (GMT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

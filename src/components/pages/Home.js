@@ -3,10 +3,26 @@ import { DataConsumer } from '../Context.js';
 import Dogcard from '../Dogcard';
 import axios from 'axios';
 
+/**
+
+* @class Unauthorized page component class
+
+* @returns returns rendered page 
+
+*/
+
 class Home extends Component {
   state = {
     dogs: []
   };
+  
+/**
+
+* @function component did mount for home
+
+* @description sets state of dogs to dogs from api so they can be rendered
+
+*/  
   componentDidMount() {
    axios.get("https://africa-spider-3000.codio-box.uk/api/dogs/")
   .then(res=> {

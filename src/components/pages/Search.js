@@ -2,17 +2,61 @@ import React, {Component, useState, useEffect} from 'react';
 import axios from 'axios'
 import Dogcard from '../Dogcard'
 
+/**
+
+* @function Search page functional component
+
+* @returns returns rendered page 
+
+*/
 
 export default function Search() {
+
   
+/**
+
+* @constant state for dogs
+
+*/
+
 const [dogs, setDogs] = useState([]);
+  
+/**
+
+* @constant state for search
+
+*/
+  
 const [search, setSearch] = useState('');
+  
+    
+/**
+
+* @constant state for query
+
+*/
 const [query, setQuery] = useState('');
 
+/**
+
+* @function use effect
+
+* @params { String } string for breed search
+
+*/
+  
 useEffect(() => {
 getDogs()
 }, [query]);
 
+/**
+
+* @function get dogs
+
+* @returns { object } returned dogs from search
+
+*/  
+  
 const getDogs = async () => {
 const res = await axios.get(`https://africa-spider-3000.codio-box.uk/api/dogs/search?breed=${query}`)
 console.log(res);
@@ -20,12 +64,27 @@ setDogs(res.data)
 
 }
 
+/**
+
+* @function update search
+
+* @description updates search state everytime searchbar is typed into
+
+*/  
 
 const updateSearch = e => {
 // e is for event, so every time there is an event we run updatesearch for the search bar
     setSearch(e.target.value)
     console.log(search)
 }
+
+/**
+
+* @function get search
+
+* @description sets search input to query and resets search
+
+*/  
 
 const getSearch = e => {
     e.preventDefault();

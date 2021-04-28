@@ -4,12 +4,28 @@ import { useHistory } from 'react-router-dom';
 import AuthContext from '../../context/AuthContext'
 // import Cookies from 'universal-cookie';
 
+/**
+
+* @class Login page functional component
+
+* @returns returns rendered page 
+
+*/
+
 function Login() {
 
   const { getLogIn } = useContext(AuthContext); //destructure to get property  
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+ 
+/**
+
+* @function login
+
+* @returns redirects if successful axios login req
+
+*/   
   
     //pass event data from fields
   async function login(e) {

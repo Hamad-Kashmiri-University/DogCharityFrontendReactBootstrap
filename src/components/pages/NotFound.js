@@ -1,6 +1,14 @@
 //page inspired from 80/20 coding youtube channel
 import React, {Component} from 'react';
 
+/**
+
+* @class Not Found page component class
+
+* @returns returns rendered page 
+
+*/
+
 class NotFound extends Component {
   render() {
     return (

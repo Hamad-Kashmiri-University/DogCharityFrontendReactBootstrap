@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+/**
 
+* @function AuthProvider
+
+* @returns rendered footer component
+
+*/ 
 export default function Footer() {
   return (
    <FooterStyle className="footer-primary"> 

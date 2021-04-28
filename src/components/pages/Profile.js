@@ -2,6 +2,14 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
+/**
+
+* @function Profile page functional component
+
+* @returns returns rendered page 
+
+*/
+
 function Profile() {
   
   const history = useHistory();
@@ -11,6 +19,14 @@ function Profile() {
   const [imageURL, setImageURL] = useState("");
   const [age, setAge] = useState(0);
   const [gender, setGender] = useState("");
+ 
+/**
+
+* @function add dog
+
+* @description redirects if successful axios post req to dogs endpoint
+
+*/    
   
     async function addNewDog(e) {
     e.preventDefault();

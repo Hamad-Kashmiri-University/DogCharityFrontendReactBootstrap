@@ -4,12 +4,27 @@ import axios from 'axios';
 
 const AuthContext = React.createContext();
 
+/**
+
+* @function AuthProvider
+
+* @returns data context to check auth in all routes
+
+*/  
+
 //provide true ur false to each component if logged in
 function AuthProvider(props) {
   
   const[loggedIn, setLoggedIn] = useState(undefined);
   
-  
+
+/**
+
+* @function get log in
+
+* @returns axios request to see if user is logged in
+
+*/ 
   
   async function getLogIn() {
   
